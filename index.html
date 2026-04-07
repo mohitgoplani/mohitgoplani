@@ -406,26 +406,8 @@ function Portfolio() {
               </div>
             </div>
 
-            {/* Photo frame - right aligned, no negative space */}
-            <div style={{position:"relative",width:"100%",maxWidth:320,marginLeft:"auto"}}>
-              {/* Warm glow behind photo */}
-              <div style={{position:"absolute",inset:-20,background:"radial-gradient(ellipse at center, rgba(232,132,92,0.12), transparent 70%)",zIndex:-1}}/>
-              {/* Decorative frame border */}
-              <div style={{position:"absolute",top:-6,right:-6,bottom:-6,left:-6,border:"1px solid rgba(232,132,92,0.15)",borderRadius:16,zIndex:0}}/>
-              <div style={{position:"absolute",top:-12,right:-12,bottom:-12,left:-12,border:"1px solid rgba(232,132,92,0.06)",borderRadius:20,zIndex:0}}/>
-              
-              {/* Photo */}
-              <img src={CASUAL_IMG} alt="Mohit" style={{width:"100%",display:"block",position:"relative",zIndex:1,filter:"none",borderRadius:12,objectFit:"cover",objectPosition:"center center",height:420,maxHeight:"50vh"}}/>
-              
-              {/* Corner accents on photo */}
-              <div style={{position:"absolute",top:-3,left:-3,width:20,height:20,borderTop:"2px solid #E8845C",borderLeft:"2px solid #E8845C",borderRadius:"4px 0 0 0",zIndex:3,opacity:0.5}}/>
-              <div style={{position:"absolute",bottom:-3,right:-3,width:20,height:20,borderBottom:"2px solid #E8845C",borderRight:"2px solid #E8845C",borderRadius:"0 0 4px 0",zIndex:3,opacity:0.5}}/>
-              
-              {/* Photo caption overlay */}
-              <div style={{position:"absolute",bottom:0,left:0,right:0,padding:"1rem",background:"linear-gradient(transparent, rgba(0,0,0,0.7))",borderRadius:"0 0 12px 12px",zIndex:2}}>
-                <p style={{fontSize:"0.6rem",letterSpacing:"0.15em",textTransform:"uppercase",color:"#E8845C",fontWeight:600,margin:0}}>Mohit Goplani</p>
-                <p style={{fontSize:"0.55rem",color:"rgba(255,255,255,0.5)",margin:"0.2rem 0 0 0",fontWeight:300}}>{"MBA '27 \u00b7 Stevens Institute of Technology"}</p>
-              </div>
+            <div style={{width:300,marginLeft:"auto"}}>
+              <img src={CASUAL_IMG} alt="Mohit" style={{width:"100%",borderRadius:12}}/>
             </div>
 
             {/* Interactive social links below photo */}
