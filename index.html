@@ -25,7 +25,7 @@ function LoadingScreen({ onComplete }) {
     const t = [setTimeout(()=>setPhase(1),300),setTimeout(()=>setPhase(2),700),setTimeout(()=>setPhase(3),1100),setTimeout(()=>setPhase(4),1500),setTimeout(()=>setPhase(5),1900),setTimeout(()=>setPhase(6),2600),setTimeout(()=>setPhase(7),3800),setTimeout(()=>setPhase(8),4400),setTimeout(()=>{setPhase(9);if(onComplete)onComplete();},5600)];
     return () => t.forEach(clearTimeout);
   },[onComplete]);
-  const words=["Strategy","Content","Data","Culture","Stories"];
+  const words=["Strategy","Data","Culture","Stories","Management"];
   return (
     <div style={{position:"fixed",inset:0,zIndex:10000,pointerEvents:phase>=9?"none":"all"}}>
       <div style={{position:"absolute",top:0,left:0,width:"50%",height:"100%",background:"#0A0A0A",zIndex:4,transform:phase>=8?"translateX(-102%)":"translateX(0)",transition:"transform 1s cubic-bezier(.76,0,.24,1)"}}/>
@@ -111,8 +111,8 @@ function SkillConstellation({categories, onSkillClick}) {
   const [hovered, setHovered] = useState(null);
   const allSkills = [];
   const catPositions = [
-    {label:"Strategy & Thinking", y:8},
-    {label:"Marketing & Brand", y:28},
+    {label:"Strategy & Consulting", y:8},
+    {label:"Customer & Brand", y:28},
     {label:"Data & AI", y:48},
     {label:"Operations & Execution", y:68},
     {label:"Tools", y:88},
@@ -171,67 +171,71 @@ function SkillConstellation({categories, onSkillClick}) {
 
 /* DATA */
 const SERVICES = [
-  {n:"01",t:"Consulting",tag:"Clarity from complexity",d:"Drove 150% YoY growth by eliminating bottlenecks across 20+ accounts."},
-  {n:"02",t:"Business Development",tag:"Growth through collaboration",d:"Secured partnerships with Bumble, Meta, YouTube (Google), and Government of India."},
-  {n:"03",t:"Brand Strategy",tag:"Strategy meets story",d:"Built 2Sloggers into a $150K+ revenue content IP within its first year."},
-  {n:"04",t:"Marketing",tag:"Marketing that performs",d:"Achieved a consistent 5:1 ROI through performance analytics and budget optimization."},
-  {n:"05",t:"Influencer Marketing",tag:"Content that connects",d:"Managed 20+ creator accounts, delivered campaigns for Sony Music and Warner Bros."},
-  {n:"06",t:"Supply Chain & Ops",tag:"Systems that scale",d:"100% on-time execution across 15+ live brand activations."},
-  {n:"07",t:"Events",tag:"Ideas to experiences",d:"70K+ attendees across festivals, $40K+ combined sponsorship revenue."},
+  {n:"01",t:"Strategy & Consulting",tag:"Clarity from complexity",d:"Structured problem solving from the McKinsey Forward Program, applied in live cases like the Netflix House market entry study."},
+  {n:"02",t:"Business Development",tag:"Growth through collaboration",d:"Serviced 20+ brands at a 5:1 return, collaborating with Bumble, Meta, YouTube, and the Government of India."},
+  {n:"03",t:"Brand & Content Strategy",tag:"Strategy meets story",d:"Led business development for 2Sloggers from day one to $150K in revenue in its first year."},
+  {n:"04",t:"Data & Analytics",tag:"Decisions from data",d:"Customer lifetime value, regression, and A/B testing, worked in RStudio, Tableau, and Excel."},
+  {n:"05",t:"AI Tools & Apps",tag:"Software, not slides",d:"Shipped Stevens Slide Studio and Caption Clean at CPE, Task Tracker live, and Primer in build, with Claude API, Next.js, and Supabase."},
+  {n:"06",t:"Customer Experience & CRM",tag:"Journeys that convert",d:"Customer journey mapping, segmentation, and CRM consolidation, including a live capstone rebuilding a nonprofit's donor data into one source of truth."},
+  {n:"07",t:"Creator & Influencer",tag:"Content that connects",d:"Led business for 10+ creators, each growing revenue by at least 150%, with activations for Sony Music and Warner Bros."},
+  {n:"08",t:"Events & Activations",tag:"Ideas to experiences",d:"Festivals for 70,000+ people and 15+ brand activations, delivered 100% on time."},
 ];
 
 const SKILL_CATS = [
-  {cat:"Strategy & Thinking",skills:[
-    {s:"Strategic Thinking",desc:"Identified bottlenecks and growth levers across 20+ accounts",links:"Monk, AcePark, 2Sloggers"},
-    {s:"Problem Solving",desc:"Reduced manual effort by 50% through GenAI workflow design",links:"Monk, AcePark, Research Assistant"},
-    {s:"Structured Thinking",desc:"Managed execution frameworks for 45,000+ attendee events",links:"Monk, SHOUTT, Detour"},
+  {cat:"Strategy & Consulting",skills:[
+    {s:"Structured Problem Solving",desc:"McKinsey Forward Program, plus Emory's Management Consulting Specialization",links:"McKinsey Forward, Emory"},
+    {s:"Market Research",desc:"Primary research on the United States padel market, with operator interviews in progress",links:"Padel Research, Netflix House"},
+    {s:"Customer-Centric Strategy",desc:"Pricing, service design, and customer journeys, from Monk to the Netflix House go-to-market case",links:"Monk, Netflix House"},
     {s:"Narrative Building",desc:"Crafted PR articles and brand stories for national media",links:"Concept PR, 2Sloggers"},
   ]},
-  {cat:"Marketing & Brand",skills:[
-    {s:"Brand Strategy",desc:"Built 2Sloggers into a $150K+ revenue content IP",links:"Monk, 2Sloggers"},
-    {s:"Content Strategy",desc:"Managed daily digital content and integrated campaigns",links:"Concept PR, Monk"},
-    {s:"Influencer Marketing",desc:"Managed 20+ creator accounts with major brand partnerships",links:"Monk"},
-    {s:"Campaign Execution",desc:"Delivered campaigns for Sony Music, Warner Bros., 15+ activations",links:"Monk, Shark & Ink"},
+  {cat:"Customer & Brand",skills:[
+    {s:"Customer Journey & Segmentation",desc:"Audience segmentation, positioning, and a measurement framework for the Netflix House campaign",links:"Netflix House, Monk"},
+    {s:"CRM & Customer Data",desc:"Consolidating a nonprofit's donor CRM into a single source of truth",links:"CapSource Capstone, Monk"},
+    {s:"Brand & Content Strategy",desc:"Led 2Sloggers business development from day one to $150K in year one",links:"Monk, 2Sloggers"},
+    {s:"Campaign Performance Analytics",desc:"Tracked KPIs and reallocated spend against conversion data for a 5:1 return",links:"Monk, Shark & Ink"},
   ]},
   {cat:"Data & AI",skills:[
-    {s:"Data Analysis",desc:"Built dashboards and automated reporting, cutting prep time by 40%",links:"Research Assistant, Monk"},
-    {s:"Generative AI",desc:"Built AcePark MVP and post-production automation using GenAI",links:"AcePark, Research Assistant"},
-    {s:"Python",desc:"MVP development, data processing, and automation scripting",links:"AcePark, Stevens MBA"},
-    {s:"Business Intelligence",desc:"Applied analytics to strategy and decision-making",links:"Stevens MBA"},
+    {s:"Data Analysis",desc:"Customer lifetime value, regression, decision trees, and A/B testing",links:"Stevens MBA, BIA 672"},
+    {s:"AI Workflow Design",desc:"Built Stevens Slide Studio and Caption Clean, and tools with the Claude API",links:"Stevens CPE, Primer"},
+    {s:"Business Intelligence",desc:"Applied analytics to strategy and executive reporting",links:"Stevens MBA"},
+    {s:"App Development",desc:"Shipped Task Tracker and building Primer on Next.js and Supabase",links:"Task Tracker, Primer"},
   ]},
   {cat:"Operations & Execution",skills:[
-    {s:"Project Management",desc:"Directed 15+ live activations with 100% on-time delivery",links:"Monk, SHOUTT, Detour"},
-    {s:"Event Execution",desc:"Executed 25+ shows and festivals for up to 45,000 attendees",links:"Shark & Ink, SHOUTT"},
-    {s:"Process Optimization",desc:"Drove 150% YoY growth by eliminating bottlenecks",links:"Monk, Research Assistant"},
-    {s:"Stakeholder Mgmt",desc:"Coordinated with Bumble, Meta, YouTube, Sony Music, Jio",links:"Monk, Shark & Ink"},
+    {s:"Project Management",desc:"Harvard ManageMentor certified, with 15+ activations delivered 100% on time",links:"Harvard, Monk"},
+    {s:"Stakeholder & Reporting",desc:"Coordinated Bumble, Meta, YouTube, Sony Music, and Reliance Jio, with executive reporting",links:"Monk, Shark & Ink"},
+    {s:"Team Leadership",desc:"Led a team of 600+ volunteers to run a 45,000 attendee festival",links:"SHOUTT, Detour"},
+    {s:"Event Execution",desc:"Festivals for up to 45,000 attendees and 25+ commercial shows",links:"Shark & Ink, SHOUTT"},
   ]},
   {cat:"Tools",skills:[
-    {s:"Tableau",desc:"Data visualization and BI dashboards",links:"Stevens MBA"},
-    {s:"Microsoft 365",desc:"Excel dashboards and PowerPoint automation",links:"Research Assistant"},
-    {s:"Adobe Creative Suite",desc:"Content creation and visual communication",links:"BMM Degree"},
-    {s:"RStudio",desc:"Statistical analysis in MBA coursework",links:"Stevens MBA"},
+    {s:"Excel & PowerPoint",desc:"Operational datasets, executive reporting, and models",links:"Stevens CPE, Monk"},
+    {s:"Claude API & Supabase",desc:"The stack behind Slide Studio, Task Tracker, and Primer",links:"Task Tracker, Primer"},
+    {s:"Google Analytics & Canva",desc:"Campaign measurement and content production",links:"Monk, Stevens CPE"},
+    {s:"RStudio & Tableau",desc:"Regression, statistical analysis, and BI dashboards",links:"Stevens MBA"},
   ]},
 ];
 
 const CERTS = [
-  {name:"Harvard ManageMentor: PM",org:"Harvard Business Impact Education",date:"2025"},
-  {name:"Foundations of PM",org:"Google",date:"2023"},
-  {name:"Project Initiation",org:"Google",date:"2023"},
+  {name:"McKinsey Forward Program",org:"McKinsey.org",date:"2026"},
+  {name:"Management Consulting Specialization",org:"Emory University",date:"2026"},
+  {name:"Harvard ManageMentor: Project Management",org:"Harvard Business Impact",date:"2025"},
+  {name:"Project Management Certificates",org:"Google on Coursera",date:"2023"},
 ];
 
 const EXP = [
-  {yr:"Dec 2025 \u2013 Present",title:"Research Assistant",org:"Stevens Institute of Technology",loc:"Hoboken, NJ",bullets:["Built Excel dashboards, reducing prep time by 40%","GenAI-driven post-production workflow, reducing 50% manual effort","Certificate of Appreciation for high-impact work"]},
-  {yr:"Sep 2025 \u2013 Present",title:"Co-Founder",org:"AcePark",loc:"Remote",bullets:["Validated urban parking inefficiencies in India","Built MVP using Python and Generative AI","User testing with 50+ beta users, preparing Mumbai launch"]},
-  {yr:"Sep 2025 \u2013 Present",title:"MBA, BI & Analytics",org:"Stevens Institute of Technology",loc:"Hoboken, NJ",bullets:["CGPA: 3.9/4","Analytics, strategy, AI-driven decision-making"]},
-  {yr:"Jul 2023 \u2013 Aug 2025",title:"Business Manager",org:"Monk Entertainment",loc:"Mumbai, India",bullets:["20+ client accounts, 150% YoY growth","2Sloggers: $150K+ revenue in year one","Partnerships: Bumble, Meta, YouTube, Gov of India","15+ activations, 100% on-time, 5:1 ROI"]},
-  {yr:"Aug 2022 \u2013 Mar 2023",title:"Cultural Secretary",org:"SHOUTT",loc:"Mumbai, India",bullets:["600+ student team, 45,000+ attendees","$30K+ sponsorships, 4 intercollegiate wins"]},
+  {yr:"2026 – 2027",title:"CRM Consolidation (Consulting Capstone)",org:"Hoboken Public Education Foundation, via CapSource",loc:"Hoboken, NJ",bullets:["Scoping fragmented donor and stakeholder CRM data flows","Defining a target-state architecture and a migration plan with the executive sponsor","Building toward one source of truth for relationship visibility"]},
+  {yr:"Dec 2025 \u2013 Present",title:"Graduate Research Assistant (CPE)",org:"College of Professional Education, Stevens",loc:"Hoboken, NJ",bullets:["Built and deployed Stevens Slide Studio, an AI app that applies brand rules and audit checks to faculty decks, cutting a 30 slide reformat from hours to a short review","Built Caption Clean, a privacy-preserving tool that corrects auto-captions against source scripts","Lead visual production for Introduction to Artificial Intelligence: 18 modules, 2,000+ students, with Synthesia and Remotion"]},
+  {yr:"2025 \u2013 Present",title:"Builder, AI Tools & Apps",org:"Independent",loc:"New York",bullets:["Task Tracker: a multi user project management app, live and in use","Primer: a personal job search dashboard, in development","Built with Claude API, Next.js, Supabase, and Vercel"]},
+  {yr:"Sep 2025 \u2013 Present",title:"Co-Founder, Strategy & Operations",org:"AcePark",loc:"Remote",bullets:["A parking and electric-vehicle charging app for a chaotic city like Mumbai, India","Took it from concept to a working MVP","Defined pricing and lead-generation strategy with technical and creative partners"]},
+  {yr:"2025 \u2013 2027",title:"MBA, BI & Analytics",org:"Stevens Institute of Technology",loc:"Hoboken, NJ",bullets:["STEM designated, graduating May 2027","CGPA: 3.9/4","Netflix House go-to-market study (segmentation, positioning, channel mix), benchmarked against Disney and Universal","Fundamentals of Consulting, Marketing Analytics, Management of AI Technologies"]},
+  {yr:"Jul 2023 \u2013 Aug 2025",title:"Business Manager",org:"Monk Entertainment",loc:"Mumbai, India",bullets:["Led business for 10+ creators, each growing revenue by at least 150%","Serviced 20+ brands at a 5:1 return","2Sloggers: led business development to $150K in year one","Collaborated with Bumble, Meta, YouTube, and the Government of India"]},
+  {yr:"Aug 2022 \u2013 Mar 2023",title:"Co-Chairperson",org:"SHOUTT",loc:"Mumbai, India",bullets:["Led a team of 600+ volunteers","A cultural college fest that drew 45,000 attendees","$30K+ in sponsorships"]},
   {yr:"Oct 2022 \u2013 Feb 2023",title:"Chairperson",org:"Detour",loc:"Mumbai, India",bullets:["200+ student team, 25,000+ attendees","$10K+ sponsorship revenue"]},
-  {yr:"Apr 2022 \u2013 Nov 2022",title:"Marketing Intern",org:"Shark & Ink",loc:"Mumbai, India",bullets:["25+ commercial shows, Jio & Phoenix Group"]},
-  {yr:"Oct 2021 \u2013 Dec 2021",title:"PR Intern",org:"Concept PR",loc:"Mumbai, India",bullets:["PR events, editorial content, Star Plus digital"]},
-  {yr:"Jul 2020 \u2013 May 2023",title:"BMM (Advertising)",org:"Jai Hind College",loc:"Mumbai, India",bullets:["CGPA: 3.8/4, Marketing & consumer behavior"]},
+  {yr:"Apr 2022 \u2013 Nov 2022",title:"Marketing Intern",org:"Shark & Ink",loc:"Mumbai, India",bullets:["Curated 25+ commercial and corporate shows","Including work for Reliance Jio and Phoenix Group"]},
+  {yr:"Oct 2021 \u2013 Dec 2021",title:"PR Intern",org:"Concept PR",loc:"Mumbai, India",bullets:["PR events, editorial content, and Star Plus digital"]},
+  {yr:"Jul 2020 \u2013 May 2023",title:"BMM (Advertising)",org:"Jai Hind College",loc:"Mumbai, India",bullets:["CGPA: 3.8/4, marketing and consumer behaviour"]},
 ];
 
-const EXPERTISE_LABELS = ["Marketing","Brand Strategy","Consulting","Events","Influencer Marketing","Business Dev","Operations"];
+const EXPERTISE_LABELS = ["Strategy","Consulting","Business Dev","Data & AI","Brand","Events","Operations"];
 
 /* MAIN */
 
@@ -338,7 +342,7 @@ function Portfolio() {
 
         {/* Top right */}
         <div style={{position:"absolute",top:"8%",right:"4%",marginTop:"4rem",fontSize:"0.55rem",letterSpacing:"0.12em",textTransform:"uppercase",color:"rgba(255,255,255,0.2)",zIndex:5,textAlign:"right"}}>
-          MBA 2027<br/>New York, USA
+          MBA 2027<br/>Jersey City, NJ
         </div>
 
         {/* SUIT PHOTO - static, centered */}
@@ -367,14 +371,14 @@ function Portfolio() {
           </Reveal>
           <Reveal delay={0.15}>
             <p style={{fontSize:"0.88rem",color:"rgba(255,255,255,0.45)",lineHeight:1.7,fontWeight:300,marginTop:"1.2rem",maxWidth:400}}>
-              3+ years of turning ideas into reality — from a $150K content IP to 70K-attendee festivals across 50+ brand collaborations. Now pursuing my MBA at the intersection of data, AI, and strategy to build what comes next.
+              Three years turning ideas into revenue in Mumbai's creator economy: 10+ creators each growing at least 150%, 20+ brands serviced at a 5:1 return, and festivals for 70,000 people. Now pursuing my MBA at the intersection of data, AI, and strategy, and building tools that ship.
             </p>
           </Reveal>
 
           {/* Stats */}
           <Reveal delay={0.25}>
             <div style={{display:"flex",flexDirection:"column",gap:"0.8rem",marginTop:"1.8rem"}}>
-              {[{v:"50+",l:"Brands Collaborated"},{v:"25+",l:"Events Executed"},{v:"$150K+",l:"Revenue Generated"}].map(s => (
+              {[{v:"$150K",l:"2Sloggers Revenue, Yr 1"},{v:"70K+",l:"Festival Attendees"},{v:"2,000+",l:"Students Reached"}].map(s => (
                 <div key={s.l} style={{display:"flex",alignItems:"center",gap:"0.8rem"}}>
                   <div style={{width:20,height:20,borderRadius:"50%",background:"rgba(232,132,92,0.15)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><span style={{color:"#E8845C",fontSize:"0.55rem"}}>{"\u2713"}</span></div>
                   <span style={{fontFamily:"'Syne',sans-serif",fontWeight:800,fontSize:"1.2rem",color:"#E8845C",minWidth:55}}>{s.v}</span>
@@ -515,9 +519,10 @@ function Portfolio() {
         <Reveal delay={0.1}><h2 style={{fontFamily:"'Syne',sans-serif",fontWeight:800,fontSize:"clamp(1.8rem,4vw,3rem)",lineHeight:1.1,letterSpacing:"-0.03em",marginBottom:"2rem"}}>What if strategy could feel like <span style={{color:"#E8845C"}}>instinct?</span></h2></Reveal>
         <Reveal delay={0.2}>
           <div style={{fontSize:"0.92rem",color:"rgba(255,255,255,0.5)",lineHeight:1.85,fontWeight:300}}>
-            <p>I am a strategic thinker who turns ideas into concepts and concepts into reality. With 3+ years in marketing, I have collaborated with 50+ brands and agencies, built content IPs, and executed 25+ commercial events. My work sits at the intersection of storytelling, execution, and data-driven decision-making, now augmented by AI to drive smarter outcomes.</p>
-            <p style={{marginTop:"1rem"}}>Currently pursuing my MBA in Business Intelligence & Analytics at Stevens Institute of Technology, I am deepening my ability to combine strategy with analytics and emerging technologies. As a Research Assistant at Stevens, we are building GenAI agents to automate post-production workflows for online learning. Alongside this, I am building AcePark, a platform for everyday parking and motor needs, where I have used GenAI and Python to develop early-stage product systems from the ground up.</p>
-            <p style={{marginTop:"1rem"}}>On the days I am not working, you will find me playing racquet sports, I have been lately hooked to Padel or going for a run, sports keep the rhythm going.</p>
+            <p>I am a strategic thinker who turns ideas into concepts and concepts into reality. I spent three years in Mumbai's creator economy at Monk Entertainment, where I led business for 10+ creators, each growing revenue by at least 150%, and serviced more than 20 brands at a 5:1 return, with activations for Sony Music and Warner Bros. My work sits at the intersection of storytelling, execution, and data driven decision making, now sharpened by AI.</p>
+            <p style={{marginTop:"1rem"}}>I am pursuing my MBA in Business Intelligence and Analytics at Stevens Institute of Technology (STEM designated, graduating May 2027). As a Graduate Research Assistant at the College of Professional Education, I build AI tools that earn their keep: Stevens Slide Studio, which applies brand rules and audit checks to faculty decks and turns hours of reformatting into a short review, and Caption Clean, which corrects lecture captions against source scripts. I also lead visual production for Introduction to Artificial Intelligence, a course for 2,000+ students. Right now I am consulting on a live capstone, consolidating a nonprofit's donor CRM into a single source of truth for the Hoboken Public Education Foundation. For a marketing project, my team and I built the go-to-market case for Netflix House, Netflix's move into physical entertainment, benchmarked against Disney and Universal.</p>
+            <p style={{marginTop:"1rem"}}>I am also the co-founder of AcePark, a parking and electric-vehicle charging app for a chaotic city like Mumbai, India, taken from concept to a working MVP. I like solving everyday problems with AI tools, and the fastest way to test an idea is to ship it, so I built Task Tracker (live) and I am building Primer, my job search dashboard.</p>
+            <p style={{marginTop:"1rem"}}>Away from the desk I play padel. I also study it: one of the fastest growing sports in the world, still early in the United States. I am researching why the growth has lagged the projections, and where the opportunity is.</p>
           </div>
         </Reveal>
       </section>
